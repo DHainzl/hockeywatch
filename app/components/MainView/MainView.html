@@ -1,2 +1,13 @@
-<h1>Hockeywatch</h1>
-<p>Monitor your Hockey matches online!</p>
+<header>
+	<nav>
+		<ul>
+			<li><a href="#/public-route" [class.active]="publicRouteActive()">Public Route</a></li>
+			<li><a href="#/private-route" [class.active]="privateRouteActive()">Private Route</a></li>
+		</ul>
+	</nav>
+</header>
+
+<main>
+	<h1>{{tile}}</h1>
+	<router-outlet></router-outlet>
+</main>

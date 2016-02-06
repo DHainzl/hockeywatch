@@ -21,6 +21,11 @@ import {
 	{ path: '/', redirectTo: [ './Home' ] }
 ])
 export class MainView {
+
+	constructor () {
+
+	}
+
 	routeActive(route: string) : boolean {
 		let match = location.hash.match(/\/([^\/]+)\/?/);
 		return match && match[1] == route;

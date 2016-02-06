@@ -1,0 +1,10 @@
+.page {
+	h1 {
+		color: $main-color;
+	}
+}
+
+@import "Home/Home";
+@import "Teams/Teams";
+@import "Games/Games";
+@import "Settings/Settings";

@@ -1,5 +1,19 @@
-<h1>Live</h1>
-<p>Lorem Ipsum</p>
+<div class="page page-home">
+	<h1><span class="fa fa-clock-o"></span> Live</h1>
+	<p>Lorem Ipsum</p>
 
-<h1>Tabelle</h1>
-<p>Lorem Ipsum</p>
+	<h1><span class="fa fa-table"></span> Tabelle</h1>
+	<div *ngIf="loading">
+		Loading table ...
+	</div>
+	<div *ngIf="!loading">
+		<div *ngIf="standings.statusId == 1">
+			<p *ngFor="#row of standings.data.rows">
+				{{row.teamLongname}}
+			</p>
+		</div>
+		<div *ngIf="standings.statusId != 1">
+			Could not get data from hockeydata.net: Error #{{standings.statusId}}: {{standings.statusMsg}}
+		</div>
+	</div>
+</div>

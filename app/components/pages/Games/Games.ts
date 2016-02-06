@@ -1,3 +1,5 @@
+/// <reference path="../../../../typings/moment/moment.d.ts" />
+
 import { Component, View } from 'angular2/core';
 
 @Component({

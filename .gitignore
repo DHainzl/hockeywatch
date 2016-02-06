@@ -41,4 +41,5 @@ node_modules
 # App specific files
 app/**/*.js
 app/**/*.js.map
+assets/css/colors-*.css
 assets/js/config.js

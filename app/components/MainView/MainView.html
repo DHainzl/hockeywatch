@@ -1,13 +1,32 @@
-<header>
+<div class="container">
 	<nav>
-		<ul>
-			<li><a href="#/public-route" [class.active]="publicRouteActive()">Public Route</a></li>
-			<li><a href="#/private-route" [class.active]="privateRouteActive()">Private Route</a></li>
-		</ul>
+		<a href="#/home" [class.active]="routeActive('home')">
+			<div class="nav-content">
+				<div class="fa fa-home"></div>
+				Home
+			</div>
+		</a>
+		<a href="#/teams" [class.active]="routeActive('teams')">
+			<div class="nav-content">
+				<div class="fa fa-users"></div>
+				Teams
+			</div>
+		</a>
+		<a href="#/games" [class.active]="routeActive('games')">
+			<div class="nav-content">
+				<div class="fa fa-trophy"></div>
+				Spiele
+			</div>
+		</a>
+		<a href="#/settings" [class.active]="routeActive('settings')">
+			<div class="nav-content">
+				<div class="fa fa-cog"></div>
+				Einstellungen
+			</div>
+		</a>
 	</nav>
-</header>
 
-<main>
-	<h1>{{tile}}</h1>
-	<router-outlet></router-outlet>
-</main>
+	<main>
+		<router-outlet></router-outlet>
+	</main>
+</div>

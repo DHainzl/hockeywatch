@@ -49,3 +49,35 @@
 		overflow-y: auto;
 	}
 }
+
+@media (max-width: 767px) {
+	.main-container {
+		nav {
+			order: 2;
+
+			height: 50px;
+			width: 100%;
+			display: flex;
+
+			a {
+				float: left;
+				border-right: 1px solid #aaa;
+				border-bottom: none;
+				height: 50px;
+				flex: 1;
+				font-size: 10px;
+
+				.nav-content .fa {
+					 font-size: 20px;
+					 margin-bottom: 2px;
+				}
+			}
+		}
+		main {
+			order: 1;
+
+			width: 100%;
+			height: calc(100% - 50px);
+		}
+	}
+}

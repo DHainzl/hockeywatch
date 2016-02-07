@@ -9,6 +9,10 @@ This is a project Pbased on Angular 2 (currently beta 2) and Typescript. To star
 ## Configuration
 
 Copy the app/config.sample.js into a file config.js and replace the variables with your configuration values.
+If you deploy on Azure (TODO Small tutorial on how to do this), you'll need to set the following environment variables:
+
+* `HOCKEYWATCH_API_KEY`: Your Hockeydata.net API key
+* `HOCKEYWATCH_API_REF`: Your Hockeydata.net API Referer
 
 ## License
 

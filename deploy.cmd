@@ -103,9 +103,13 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   call :ExecuteCmd !NPM_CMD! install tsd node-sass -g
   call :ExecuteCmd !NPM_CMD! install
   call :ExecuteCmd !NPM_CMD! run build
+
+  :: Custom node deployment
+  call :ExecuteCmd node deploy.js
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 

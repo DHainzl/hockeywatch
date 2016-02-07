@@ -1,6 +1,6 @@
 window.config = {
-	apiKey: '<your api key here>',
-	apiReferer: '<your api referer here>',
+	apiKey: '__API_KEY__',
+	apiReferer: '__API_REF__',
 	divisions: {
 		ebel: {
 			division_201516: {

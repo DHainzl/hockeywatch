@@ -1,0 +1,32 @@
+.game-results {
+	.game-result {
+		text-align: center;
+		background-color: #ddd;
+		border-radius: 5px;
+		margin-bottom: 10px;
+
+		&:nth-child(even) {
+			background-color: #eee;
+		}
+
+		.team-logo {
+			margin: 5px;
+		}
+
+		.score-row {
+			.team-name {
+				font-size: 18px;
+				margin: 0 10px;
+			}
+			.score {
+				font-weight: bold;
+				font-size: 24px;
+			}
+		}
+
+		.more-info {
+			color: #888;
+			font-size: 12px;
+		}
+	}
+}

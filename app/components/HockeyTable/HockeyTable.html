@@ -1,0 +1,43 @@
+<div class="hockey-table">
+	<h2><ng-content></ng-content></h2>
+	<div *ngIf="loading">
+		Loading data ...
+	</div>
+	<div *ngIf="!loading">
+		<div *ngIf="data.statusId == 1" class="table-responsive">
+			<table class="table">
+				<tr>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>Team</th>
+					<th>Played</th>
+					<th>Won</th>
+					<th>Lost</th>
+					<th>Overtime Won</th>
+					<th>Overtime Lost</th>
+					<th>Goals For</th>
+					<th>Goals Against</th>
+					<th>Goal Difference</th>
+					<th>Points</th>
+				</tr>
+				<tr *ngFor="#row of data.data.rows; #i = index">
+					<td>{{i + 1}}</td>
+					<td><img [src]="row.id | teamLogo:divisionId" alt="Team logo {{row.teamLongname}}" title="Team logo {{row.teamLongname}}" width="50" /></td>
+					<td>{{row.teamLongname}}</td>
+					<td>{{row.gamesPlayed}}</td>
+					<td>{{row.gamesWon}}</td>
+					<td>{{row.gamesLost}}</td>
+					<td>{{row.gamesWonInOt}}</td>
+					<td>{{row.gamesLostInOt}}</td>
+					<td>{{row.goalsFor}}</td>
+					<td>{{row.goalsAgainst}}</td>
+					<td>{{row.goalDifference}}</td>
+					<td>{{row.points}}</td>
+				</tr>
+			</table>
+		</div>
+		<div *ngIf="data.statusId != 1">
+			Could not get data from hockeydata.net: Error #{{data.statusId}}: {{data.statusMsg}}
+		</div>
+	</div>
+</div>

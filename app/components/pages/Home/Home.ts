@@ -1,33 +1,81 @@
 import { Component, View } from 'angular2/core';
 
-import { StandingsService } from '../../../services/services';
-import { StandingsResult } from '../../../models/models';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/concat';
+import 'rxjs/add/operator/concatAll';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/every';
+import { Subscription } from 'rxjs/Subscription';
 
-declare var config: any;		// I can't get any interface to work -_-
+import { HockeyTable, GameResults } from '../../components';
+import { ScheduleService } from '../../../services/services';
+import { ScheduleResult, ScheduleResultRow } from '../../../models/models';
+import { TeamLogoPipe } from '../../../pipes/pipes';
+
+declare var config: any;		// TODO: I can't get any interface to work -_-
 
 @Component({
 	selector: 'page-home',
-	directives: [ ],
-	templateUrl: './app/components/pages/Home/Home.html'
+	directives: [ HockeyTable, GameResults ],
+	templateUrl: './app/components/pages/Home/Home.html',
+	pipes: [TeamLogoPipe]
 })
 export class PageHome {
-	standingsService: StandingsService;
-	standings: StandingsResult;
+	scheduleService: ScheduleService;
+	scheduleLoading: boolean = true;
 
-	loading: boolean = true;
+	pastGames: ScheduleResultRow[] = [];
+	liveGames: ScheduleResultRow[] = [];
+	futureGames: ScheduleResultRow[] = [];
 
-	constructor (standingsService: StandingsService) {
-		this.standingsService = standingsService;
 
-		let division = config.divisions.ebel.division_201516.base;
-		this.standings = this.standingsService.get(division);
-		this.loading = false;
-		/*
-			.subscribe(
-				result => this.standings = result,
-				error => console.error('Error', error),
-				() => console.log('Completed!')
-			);
-		*/
+	divisions: Division[] = [
+		new Division(config.divisions.ebel.division_201516.placement, "Platzierungsrunde"),
+		new Division(config.divisions.ebel.division_201516.qualification, "Qualifikationsrunde")
+	];
+
+	constructor (scheduleService: ScheduleService) {
+		this.scheduleService = scheduleService;
+
+		this.reloadGamesList();
+	}
+
+	reloadGamesList () {
+		let promises: Promise<ScheduleResult>[] = this.divisions.map(division => this.scheduleService.get(division.id).toPromise());
+
+		Promise.all(promises)
+			.then(results => {
+				this.pastGames = [];
+				this.liveGames = [];
+				this.futureGames = [];
+
+				results.forEach(result => {
+					this.pastGames = this.pastGames.concat(result.data.rows.filter(row => row.gameStatus > 1));
+					this.liveGames = this.liveGames.concat(result.data.rows.filter(row => row.gameStatus == 1));
+					this.futureGames = this.futureGames.concat(result.data.rows.filter(row => row.gameStatus == 0));
+				});
+
+				// Filtering;
+				let lastGameDate: moment.Moment = moment.max(this.pastGames.map(row => moment(row.gameUtcTimestamp).startOf('day')));
+				let nextGameDate: moment.Moment = moment.min(this.futureGames.map(row => moment(row.gameUtcTimestamp).startOf('day')));
+
+				this.pastGames = this.pastGames.filter(row => moment(row.gameUtcTimestamp).isSame(lastGameDate, 'day'));
+				this.futureGames = this.futureGames.filter(row => moment(row.gameUtcTimestamp).isSame(nextGameDate, 'day'));
+
+				this.scheduleLoading = false;
+			})
+			.catch(error => console.error('Error', error));
+	}
+}
+
+class Division {
+	id: number;
+	title: string;
+
+	constructor(id: number, title: string) {
+		this.id = id;
+		this.title = title;
 	}
 }

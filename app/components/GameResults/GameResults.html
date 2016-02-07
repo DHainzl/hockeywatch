@@ -1,0 +1,19 @@
+<div class="game-results">
+	<div *ngIf="games.length > 0">
+		<h2>{{title}}</h2>
+		<div *ngFor="#game of games" class="game-result clearfix">
+			<div class="team-logo pull-left">
+				<img [src]="game.homeTeamId | teamLogo:game.divisionId" alt="Team logo {{game.homeTeamLongName}}" title="Team logo {{game.homeTeamLongName}}" width="40" />
+			</div>
+			<div class="team-logo pull-right">
+				<img [src]="game.awayTeamId | teamLogo:game.divisionId" alt="Team logo {{game.awayTeamLongName}}" title="Team logo {{game.awayTeamLongName}}" width="40" />
+			</div>
+			<div class="score-row">
+				<span class="team-name">{{game.homeTeamShortName}}</span> <span class="score">{{game.homeTeamScore}} : {{game.awayTeamScore}}</span> <span class="team-name">{{game.awayTeamShortName}}</span>
+			</div>
+			<div class="more-info">
+				{{ game.scheduledDate.longValue }} {{ game.scheduledTime}}
+			</div>
+		</div>
+	</div>
+</div>

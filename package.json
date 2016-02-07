@@ -4,26 +4,27 @@
   "description": "",
   "author": "David Hainzl <david@dhainzl.at>",
   "scripts": {
-  	"tsc": "tsc",
-  	"tsc:w": "tsc -w",
-  	"lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
     "build-css": "concurrent \"npm run css-color-neutral\" \"npm run css-color-vsv\"",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "css-color-neutral": "node-sass app/css/colors-neutral.scss assets/css/colors-neutral.css",
     "css-color-vsv": "node-sass app/css/colors-vsv.scss assets/css/colors-vsv.css",
-  	"start": "concurrent \"npm run tsc:w\" \"npm run watch-css\" \"npm run lite\"",
+    "start": "concurrent \"npm run tsc:w\" \"npm run watch-css\" \"npm run lite\"",
     "build": "concurrent \"npm run tsc\" \"npm run build-css\""
   },
   "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.3",
-    "systemjs": "0.19.6",
+    "angular2-jwt": "0.1.6",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
+    "moment": "^2.11.2",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.11",
-    "angular2-jwt": "0.1.6"
+    "systemjs": "0.19.6",
+    "zone.js": "0.5.11"
   },
   "devDependencies": {
     "concurrently": "^1.0.0",

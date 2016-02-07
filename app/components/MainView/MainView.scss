@@ -1,4 +1,4 @@
-.container {
+.main-container {
 	height: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -42,9 +42,10 @@
 	}
 
 	main {
-		flex-grow: 1;
+		width: calc(100% - 100px);
 		height: 100%;
 
 		padding: 10px 30px;
+		overflow-y: auto;
 	}
 }

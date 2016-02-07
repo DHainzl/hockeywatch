@@ -20,7 +20,7 @@ export class StandingsService {
 
 	get(divisionId: number): Observable<StandingsResult> {
 		return this.jsonp
-			.request(StandingsService.url + '&divisionId=' + divisionId)
+			.request(StandingsService.url + '&divisionId=' + divisionId + '&timestamp=' + Date.now())
 			.map(result => result.json());
 	}
 }

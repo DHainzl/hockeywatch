@@ -19,7 +19,7 @@ export class ScheduleService {
 	}
 
 	get(divisionId: number, live: boolean = false): Observable<ScheduleResult> {
-		var url = ScheduleService.url + '&divisionId=' + divisionId;
+		var url = ScheduleService.url + '&divisionId=' + divisionId + + '&timestamp=' + Date.now();
 		if (live) {
 			url += '&widgetOptions={"live":true}';
 		}

@@ -11,7 +11,8 @@
 						<span class="visible-xs">{{game.homeTeamShortName}}</span>
 						<span class="hidden-xs">{{game.homeTeamLongName}}</span>
 					</span>
-					<span class="score">{{game.homeTeamScore}} : {{game.awayTeamScore}}</span>
+					<span *ngIf="showScore" class="score">{{game.homeTeamScore}} : {{game.awayTeamScore}}</span>
+					<span *ngIf="!showScore" class="score"> : </span>
 					<span class="team-name team-away">
 						<span class="visible-xs">{{game.awayTeamShortName}}</span>
 						<span class="hidden-xs">{{game.awayTeamLongName}}</span>

@@ -12,4 +12,5 @@ import { TeamLogoPipe } from '../../pipes/pipes';
 export class GameResults {
 	@Input("games") games: ScheduleResultRow[];
 	@Input("title") title: string;
+	@Input("showScore") showScore: boolean = true;
 }

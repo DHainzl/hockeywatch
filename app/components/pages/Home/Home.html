@@ -8,7 +8,7 @@
 		<div *ngIf="liveGames.length == 0">
 			<!-- No live games, show past / future -->
 			<game-results title="Letzte Spiele" [games]="pastGames"></game-results>
-			<game-results title="Nächste Spiele" [games]="futureGames"></game-results>
+			<game-results title="Nächste Spiele" [games]="futureGames" [showScore]="false"></game-results>
 		</div>
 		<div *ngIf="liveGames.length > 0">
 			<game-results title="Live" [games]="liveGames"></game-results>

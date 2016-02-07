@@ -1,6 +1,6 @@
 .game-results {
 	.game-result {
-		text-align: center;
+		display: flex;
 		background-color: #ddd;
 		border-radius: 5px;
 		margin-bottom: 10px;
@@ -10,23 +10,39 @@
 		}
 
 		.team-logo {
+			flex: none;
+			width: 50px;
 			margin: 5px;
 		}
 
-		.score-row {
-			.team-name {
-				font-size: 18px;
-				margin: 0 10px;
+		.middle-row {
+			flex: 1;
+
+			.score-row {
+				display: flex;
+
+				.team-name {
+					font-size: 18px;
+					margin: 5px 10px 0;
+					flex: 1;
+
+					&.team-home {
+						text-align: right;
+					}
+				}
+				.score {
+					font-weight: bold;
+					font-size: 24px;
+					flex: initial;
+				}
 			}
-			.score {
-				font-weight: bold;
-				font-size: 24px;
-			}
+
 		}
 
 		.more-info {
 			color: #888;
 			font-size: 12px;
+			text-align: center;
 		}
 	}
 }

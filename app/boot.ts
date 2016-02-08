@@ -4,11 +4,16 @@ import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF, ROUTER_PROVIDERS
 import { JSONP_PROVIDERS } from 'angular2/http';
 
 import { MainView } from './components/components';
-import { StandingsService, ScheduleService } from './services/services';
+import {
+	StandingsService,
+	ScheduleService,
+	TeamDetailsService
+} from './services/services';
 
 bootstrap(MainView, [
 	StandingsService,
 	ScheduleService,
+	TeamDetailsService,
 
 	JSONP_PROVIDERS,
 

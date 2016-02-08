@@ -1,5 +1,34 @@
 <div class="page page-settings">
-	<h1><span class="fa fa-cog"></span> Einstellungen</h1>
-	<p>Themenauswahl</p>
+	<h1><span class="fa fa-paint-brush"></span> Aussehen</h1>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="theme" class="col-sm-2 control-label">Farbschema</label>
+			<div class="col-sm-10">
+				<select id="theme" class="form-control" [(ngModel)]="storage.theme">
+					<option value="neutral">Neutral</option>
+					<option value="vsv">EC VSV</option>
+					<option value="kac">EC-KAC</option>
+					<option value="ehl">EHC Liwest Black Wings Linz</option>
+				</select>
+			</div>
+		</div>
+	</form>
+	<h1><span class="fa fa-sticky-note-o"></span> Benachrichtungen</h1>
 	<p>Benachrichtungen</p>
+	<h1><span class="fa fa-star"></span> Über</h1>
+	<div class="about">
+		<p>
+			Diese App wurde entwickelt von David Hainzl und ist unter der <a href="http://dhainzl.mit-license.org/" target="_blank">MIT License</a> verfügbar. Der Quellcode ist frei verfügbar und kann auf <a href="https://github.com/DHainzl/hockeywatch" target="_blank">GitHub</a> abgerufen werden.
+		</p>
+		<!-- <p>
+			Die Daten wurden freundlicherweise zur Verfügung gestellt von <a href="http://www.hockeydata.net" target="_blank">hockeydata.net</a>.
+		</p> -->
+		<p>
+			<span class="fa fa-lg fa-external-link-square"></span> <a href="http://dhainzl.at"  target="_blank">Web</a> |
+			<span class="fa fa-lg fa-envelope-square"></span> <a href="mailto:david@dhainzl.at" target="_blank">Mail</a> |
+			<span class="fa fa-lg fa-twitter-square"></span> <a href="https://twitter.com/DHainzl" target="_blank">Twitter</a> |
+			<span class="fa fa-lg fa-github-square"></span> <a href="https://github.com/DHainzl" target="_blank">GitHub</a> |
+			<span class="fa fa-lg fa-linkedin-square"></span> <a href="https://www.linkedin.com/in/dhainzl" target="_blank">LinkedIn</a>
+		</p>
+	</div>
 </div>

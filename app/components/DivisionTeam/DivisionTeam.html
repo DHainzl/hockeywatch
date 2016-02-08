@@ -1,14 +1,11 @@
-<div class="division-team">
+<div class="division-team row">
 	<div *ngIf="teams.length > 0">
 		<h2>{{divisionTitle}}</h2>
-		<div *ngFor="#team of teams" class="team-row">
+		<a *ngFor="#team of teams" class="team-row" [routerLink]="['/TeamDetails', { teamId: team.id, divisionId: divisionId }]">
 			<span class="team-logo">
 				<img [src]="team.id | teamLogo:divisionId" alt="Team logo {{team.teamLongname}}" title="Team logo {{team.teamLongname}}" width="40" />
 			</span>
-			<span class="team-name team-home">
-				<span class="visible-xs">{{team.teamShortname}}</span>
-				<span class="hidden-xs">{{team.teamLongname}}</span>
-			</span>
-		</div>
+			<span class="team-name">{{team.teamLongname}}</span>
+		</a>
 	</div>
 </div>

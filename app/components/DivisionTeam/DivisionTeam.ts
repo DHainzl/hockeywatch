@@ -1,4 +1,5 @@
 import { Component, Input } from 'angular2/core';
+import { RouterLink } from 'angular2/router';
 
 import { StandingsService } from '../../services/services';
 import { StandingsResultRow } from '../../models/models';
@@ -7,6 +8,7 @@ import { TeamLogoPipe } from '../../pipes/pipes';
 
 @Component({
 	selector: 'division-team',
+	directives: [ RouterLink ],
 	templateUrl: './app/components/DivisionTeam/DivisionTeam.html',
 	pipes: [TeamLogoPipe]
 })

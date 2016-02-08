@@ -7,10 +7,12 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "build-css": "concurrent \"npm run css-color-neutral\" \"npm run css-color-vsv\"",
+    "build-css": "concurrent \"npm run css-color-neutral\" \"npm run css-color-vsv\" \"npm run css-color-ehl\" \"npm run css-color-kac\"",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "css-color-neutral": "node-sass app/css/colors-neutral.scss assets/css/colors-neutral.css",
     "css-color-vsv": "node-sass app/css/colors-vsv.scss assets/css/colors-vsv.css",
+    "css-color-kac": "node-sass app/css/colors-kac.scss assets/css/colors-kac.css",
+    "css-color-ehl": "node-sass app/css/colors-ehl.scss assets/css/colors-ehl.css",
     "start": "concurrent \"npm run tsc:w\" \"npm run watch-css\" \"npm run lite\"",
     "build": "concurrent \"npm run tsc\" \"npm run build-css\""
   },

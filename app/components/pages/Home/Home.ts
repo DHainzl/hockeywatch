@@ -2,12 +2,6 @@ import { Component, View } from 'angular2/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/concat';
-import 'rxjs/add/operator/concatAll';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/every';
-import { Subscription } from 'rxjs/Subscription';
 
 import { HockeyTable, GameResults } from '../../components';
 import { ScheduleService } from '../../../services/services';

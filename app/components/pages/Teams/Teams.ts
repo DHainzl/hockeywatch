@@ -12,14 +12,4 @@ declare var config: any;		// TODO: I can't get any interface to work -_-
 })
 export class PageTeams {
 	divisions = config.divisions.all;
-
-	routeParams: RouteParams;
-
-	constructor(routeParams: RouteParams) {
-		this.routeParams = routeParams;
-	}
-
-	ngOnInit () {
-		console.log("Team Id is ", this.routeParams.params.teamId);
-	}
 }

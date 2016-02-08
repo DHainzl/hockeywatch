@@ -1,2 +1,31 @@
 .division-team {
+	.team-row {
+		display: block;
+
+		color: #000;
+		background-color: #ddd;
+		border-radius: 5px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 16px;
+
+		&:focus, &:hover {
+			color: #000;
+			text-decoration: none;
+
+			background-color: #ccc;
+		}
+
+		&:nth-child(even) {
+			background-color: #eee;
+
+			&:focus, &:hover {
+				background-color: #ccc;
+			}
+		}
+
+		.team-name {
+			margin-left: 10px;
+		}
+	}
 }

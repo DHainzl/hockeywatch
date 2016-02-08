@@ -4,6 +4,7 @@ import { RouteConfig, RouterLink, RouterOutlet, Router } from 'angular2/router';
 import {
 	PageHome,
 	PageTeams,
+	PageTeamDetails,
 	PageGames,
 	PageSettings
 } from '../pages/pages';
@@ -16,12 +17,13 @@ import {
 @RouteConfig([
 	{ path: '/home', component: PageHome, as: 'Home' },
 	{ path: '/teams', component: PageTeams, as: 'Teams' },
-	{ path: '/teams/:teamId', component: PageTeams, as: 'Team' }
+	{ path: '/teams/:divisionId/:teamId', component: PageTeamDetails, as: 'TeamDetails' },
 	{ path: '/games', component: PageGames, as: 'Games' },
 	{ path: '/settings', component: PageSettings, as: 'Settings' },
 	{ path: '/', redirectTo: [ './Home' ] }
 ])
 export class MainView {
+	storage = window.localStorage;
 
 	constructor () {
 

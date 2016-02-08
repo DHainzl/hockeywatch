@@ -1,0 +1,35 @@
+<div class="page page-team-details" *ngIf="!loading">
+	<h1 class="clearfix">
+		<div class="team-logo">
+			<img [src]="teamId | teamLogo:divisionId" alt="Team logo {{data.data.teamData.teamLongname}}" title="Team logo {{data.data.teamData.teamLongname}}" width="75" />
+		</div>
+		<div class="team-info">
+			<div class="team-name">{{data.data.teamData.teamLongname}}</div>
+			<div class="team-trainer">
+				<span *ngIf="data.data.teamData.teamInformationParsed.trainer">
+					<strong>Trainer:</strong> {{data.data.teamData.teamInformationParsed.trainer}}
+				</span>
+				<span *ngIf="data.data.teamData.teamInformationParsed.coTrainer">
+					&ndash; <strong>Co-Trainer:</strong> {{data.data.teamData.teamInformationParsed.coTrainer}}
+				</span>
+			</div>
+			<div class="team-successes hidden-xs">{{(data.data.teamData.teamInformationParsed.successes || '') | replaceAll:'&lt;br&gt;':' - '}}</div>
+		</div>
+	</h1>
+
+	<div *ngIf="!scheduleLoading">
+		<div *ngIf="liveGames.length == 0">
+			<!-- No live games, show past / future -->
+			<game-results title="Letztes Spiel" [games]="pastGames"></game-results>
+			<game-results title="Nächstes Spiel" [games]="futureGames" [showScore]="false"></game-results>
+		</div>
+		<div *ngIf="liveGames.length > 0">
+			<game-results title="Live" [games]="liveGames"></game-results>
+		</div>
+	</div>
+
+	<!-- TODO More -->
+</div>
+<div class="page page-teams" *ngIf="loading">
+	Lade Teamdetails ...
+</div>

@@ -4,7 +4,6 @@
 		Loading ...
 	</div>
 	<div *ngIf="!scheduleLoading">
-		<!-- TODO Own Component -->
 		<div *ngIf="liveGames.length == 0">
 			<!-- No live games, show past / future -->
 			<game-results title="Letzte Spiele" [games]="pastGames"></game-results>

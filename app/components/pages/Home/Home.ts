@@ -30,11 +30,7 @@ export class PageHome {
 	liveGames: ScheduleResultRow[] = [];
 	futureGames: ScheduleResultRow[] = [];
 
-
-	divisions: Division[] = [
-		new Division(config.divisions.ebel.division_201516.placement, "Platzierungsrunde"),
-		new Division(config.divisions.ebel.division_201516.qualification, "Qualifikationsrunde")
-	];
+	divisions = config.divisions.current;
 
 	constructor (scheduleService: ScheduleService) {
 		this.scheduleService = scheduleService;
@@ -43,7 +39,7 @@ export class PageHome {
 	}
 
 	reloadGamesList () {
-		let promises: Promise<ScheduleResult>[] = this.divisions.map(division => this.scheduleService.get(division.id).toPromise());
+		let promises: Promise<ScheduleResult>[] = config.divisions.current.map(division => this.scheduleService.get(division.id).toPromise());
 
 		Promise.all(promises)
 			.then(results => {
@@ -67,15 +63,5 @@ export class PageHome {
 				this.scheduleLoading = false;
 			})
 			.catch(error => console.error('Error', error));
-	}
-}
-
-class Division {
-	id: number;
-	title: string;
-
-	constructor(id: number, title: string) {
-		this.id = id;
-		this.title = title;
 	}
 }

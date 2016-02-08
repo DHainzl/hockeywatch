@@ -16,6 +16,7 @@ import {
 @RouteConfig([
 	{ path: '/home', component: PageHome, as: 'Home' },
 	{ path: '/teams', component: PageTeams, as: 'Teams' },
+	{ path: '/teams/:teamId', component: PageTeams, as: 'Team' }
 	{ path: '/games', component: PageGames, as: 'Games' },
 	{ path: '/settings', component: PageSettings, as: 'Settings' },
 	{ path: '/', redirectTo: [ './Home' ] }

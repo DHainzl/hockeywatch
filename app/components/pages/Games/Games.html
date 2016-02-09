@@ -1,9 +1,32 @@
 <div class="page page-games">
-	<h1><span class="fa fa-trophy"></span> Games</h1>
-	<p>Alle Spiele der Liga</p>
-	<p>Im Kalender wer wann gegen wen spielt</p>
-	<h2>Detailseite</h2>
-	<p>Auflistung der Drittel</p>
-	<p>Torschützen</p>
-	<p>etc ...</p>
+	<div *ngIf="loading">
+		Loading ...
+	</div>
+	<div *ngIf="!loading">
+		<h1><span class="fa fa-trophy"></span> Spiele</h1>
+		<div class="calendar-header">
+			<a (click)="prevMonth()"><span class="fa fa-chevron-left"></span></a>
+			<span class="month">{{month.format('MMMM YYYY')}}</span>
+			<a (click)="nextMonth()"><span class="fa fa-chevron-right"></span></a>
+		</div>
+		<div class="week-header">
+			<div *ngFor="#weekday of weekdays">{{weekday}}</div>
+		</div>
+		<div class="calendar-body">
+			<div *ngFor="#week of [0,1,2,3,4,5]" class="week-row" [hidden]="weekHidden(week)">
+				<div *ngFor="#day of [0,1,2,3,4,5,6]" class="week-col" [class.othermonth]="isOtherMonth(week, day)" [class.today]="isToday(week, day)">
+					<div class="day-of-month">
+						{{getDay(week, day)}}
+					</div>
+					<div *ngFor="#game of getMatches(week, day)" class="game" [routerLink]="['/GameDetails', { gameId: game.id }]">
+						<span class="team homeTeam">{{game.homeTeamShortName}}</span>
+						<span class="result homeResult hidden-xs hidden-sm" [hidden]="game.gameStatus == 0">{{game.homeTeamScore}}</span>
+						<span class="divisor"> : </span>
+						<span class="result awayResult hidden-xs hidden-sm" [hidden]="game.gameStatus == 0">{{game.awayTeamScore}}</span>
+						<span class="team awayTeam">{{game.awayTeamShortName}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

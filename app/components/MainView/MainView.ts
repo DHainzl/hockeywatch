@@ -6,6 +6,7 @@ import {
 	PageTeams,
 	PageTeamDetails,
 	PageGames,
+	PageGameDetails,
 	PageSettings
 } from '../pages/pages';
 
@@ -19,6 +20,7 @@ import {
 	{ path: '/teams', component: PageTeams, as: 'Teams' },
 	{ path: '/teams/:divisionId/:teamId', component: PageTeamDetails, as: 'TeamDetails' },
 	{ path: '/games', component: PageGames, as: 'Games' },
+	{ path: '/games/:gameId', component: PageGameDetails, as: 'GameDetails' },
 	{ path: '/settings', component: PageSettings, as: 'Settings' },
 	{ path: '/', redirectTo: [ './Home' ] }
 ])

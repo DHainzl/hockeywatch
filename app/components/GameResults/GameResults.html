@@ -1,7 +1,7 @@
 <div class="game-results">
 	<div *ngIf="games.length > 0">
 		<h2>{{title}}</h2>
-		<div *ngFor="#game of games" class="game-result clearfix">
+		<div *ngFor="#game of games" class="game-result clearfix" [routerLink]="['GameDetails', { gameId: game.id }]">
 			<div class="team-logo">
 				<img [src]="game.homeTeamId | teamLogo:game.divisionId" alt="Team logo {{game.homeTeamLongName}}" title="Team logo {{game.homeTeamLongName}}" width="40" />
 			</div>

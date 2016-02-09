@@ -1,0 +1,86 @@
+.page-games {
+	.calendar-header {
+		display: flex;
+		font-size: 20px;
+		margin-top: 30px;
+		text-align: center;
+
+		a {
+			width: 50px;
+			flex: none;
+			cursor: pointer;
+
+			color: $main-color;
+		}
+		.month {
+			flex: 1;
+		}
+	}
+
+	.week-header {
+		margin-top: 20px;
+		display: flex;
+
+		div {
+			flex: 1;
+			text-align: center;
+			font-weight: bold;
+		}
+	}
+
+	.calendar-body {
+		border-top: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+
+		.week-row:not([hidden]) {
+			display: flex;
+
+			.week-col {
+				flex: 1;
+				border-right: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+
+				min-height: 100px;
+				padding: 5px;
+
+				.day-of-month {
+					text-align: right;
+				}
+
+				.game {
+					text-align: center;
+					background-color: #eee;
+					border-radius: 5px;
+					cursor: pointer;
+					margin-top: 5px;
+					padding: 1px 2px;
+
+					.result, .divisor {
+						font-weight: bold;
+					}
+
+					&:nth-child(even) {
+						background-color: #ddd;
+					}
+
+					&:hover, &:focus {
+						background-color: #ccc;
+					}
+				}
+
+				&.othermonth {
+					.day-of-month {
+						opacity: .5;
+					}
+					.game {
+						opacity: .5;
+					}
+				}
+
+				&.today {
+					background-color: #ccc;
+				}
+			}
+		}
+	}
+}

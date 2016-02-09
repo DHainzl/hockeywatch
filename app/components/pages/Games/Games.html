@@ -18,7 +18,7 @@
 					<div class="day-of-month">
 						{{getDay(week, day)}}
 					</div>
-					<div *ngFor="#game of getMatches(week, day)" class="game" [routerLink]="['/GameDetails', { gameId: game.id }]">
+					<div *ngFor="#game of getMatches(week, day)" class="game" [routerLink]="['/GameDetails', { divisionId: game.divisionId, gameId: game.id }]">
 						<span class="team homeTeam">{{game.homeTeamShortName}}</span>
 						<span class="result homeResult hidden-xs hidden-sm" [hidden]="game.gameStatus == 0">{{game.homeTeamScore}}</span>
 						<span class="divisor"> : </span>

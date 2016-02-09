@@ -7,13 +7,15 @@ import { MainView } from './components/components';
 import {
 	StandingsService,
 	ScheduleService,
-	TeamDetailsService
+	TeamDetailsService,
+	GameReportService
 } from './services/services';
 
 bootstrap(MainView, [
 	StandingsService,
 	ScheduleService,
 	TeamDetailsService,
+	GameReportService,
 
 	JSONP_PROVIDERS,
 

@@ -1,5 +1,25 @@
 <div class="page page-game-details" *ngIf="!loading">
-	<h1 class="clearfix">Game Details {{gameId}}</h1>
+	<h1><span class="fa fa-trophy"></span> Spieldetails vom {{data.data.gameData.scheduledDate.formattedLong}} {{data.data.gameData.scheduledTime}}</h1>
+
+	<div class="team-names">
+		<img [src]="data.data.gameData.homeTeamId | teamLogo:divisionId" alt="Team logo {{data.data.gameData.homeTeamLongname}}" title="Team logo {{data.data.gameData.homeTeamLongname}}" width="30" />
+		<strong>
+			<span class="hidden-xs">{{data.data.gameData.homeTeamLongname}}</span>
+			<span class="visible-xs-inline">{{data.data.gameData.homeTeamShortname}}</span>
+		</strong> gegen <strong>
+			<span class="hidden-xs">{{data.data.gameData.awayTeamLongname}}</span>
+			<span class="visible-xs-inline">{{data.data.gameData.awayTeamShortname}}</span>
+		</strong>
+		<img [src]="data.data.gameData.awayTeamId | teamLogo:divisionId" alt="Team logo {{data.data.gameData.awayTeamLongname}}" title="Team logo {{data.data.gameData.awayTeamLongname}}" width="30" />
+	</div>
+
+	<h2 *ngIf="data.data.gameData.gameStatus == 0">Es sind noch keine Daten verfügbar, da das Spiel noch nicht ausgetragen wurde.</h2>
+	<div *ngIf="data.data.gameData.gameStatus == 1">
+		<h2>Aktueller Stand: {{data.data.gameData.homeTeamScore}} : {{data.data.gameData.awayTeamScore}}</h2>
+	</div>
+	<div *ngIf="data.data.gameData.gameStatus > 1">
+		<h2>Endergebnis: {{data.data.gameData.homeTeamScore}} : {{data.data.gameData.awayTeamScore}}</h2>
+	</div>
 	<!-- TODO More -->
 </div>
 <div class="page page-game-details" *ngIf="loading">

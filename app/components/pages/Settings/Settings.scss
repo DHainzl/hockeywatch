@@ -1,0 +1,15 @@
+.page-settings {
+	.contact-icons {
+		margin-top: 20px;
+
+		.contact-icon {
+			.fa {
+				margin-right: 5px;
+			}
+			&:not(:last-child):after {
+				content: '|';
+				margin-right: 5px;
+			}
+		}
+	}
+}

@@ -26,7 +26,7 @@ export class MainView {
 	storage = window.localStorage;
 
 	constructor () {
-
+		this.storage['theme'] = this.storage['theme'] || 'neutral';
 	}
 
 	routeActive(route: string) : boolean {

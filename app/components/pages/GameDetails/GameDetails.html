@@ -22,7 +22,7 @@
 	</div>
 	<!-- TODO More -->
 </div>
-<div class="page page-game-details" *ngIf="!loading && data.statusMsg != 1">
+<div class="page page-game-details" *ngIf="!loading && data.statusId != 1">
 	<h2>Daten konnten nicht geladen werden: {{data.statusMsg}}</h2>
 </div>
 <div class="page page-game-details" *ngIf="loading">

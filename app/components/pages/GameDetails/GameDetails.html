@@ -1,4 +1,4 @@
-<div class="page page-game-details" *ngIf="!loading && data.statusId == 0">
+<div class="page page-game-details" *ngIf="!loading && data.statusId == 1">
 	<h1><span class="fa fa-trophy"></span> Spieldetails vom {{data.data.gameData.scheduledDate.formattedLong}} {{data.data.gameData.scheduledTime}}</h1>
 
 	<div class="team-names">
@@ -22,7 +22,7 @@
 	</div>
 	<!-- TODO More -->
 </div>
-<div class="page page-game-details" *ngIf="!loading && data.statusMsg != 0">
+<div class="page page-game-details" *ngIf="!loading && data.statusMsg != 1">
 	<h2>Daten konnten nicht geladen werden: {{data.statusMsg}}</h2>
 </div>
 <div class="page page-game-details" *ngIf="loading">

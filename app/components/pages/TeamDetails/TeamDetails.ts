@@ -1,18 +1,23 @@
 import { Component, Input } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 
-import { DivisionTeam, GameResults } from '../../../components/components';
+import { DivisionTeam, GameResults, Tabs, Tab } from '../../../components/components';
 import { TeamDetailsService, ScheduleService } from '../../../services/services';
-import { TeamLogoPipe, ReplaceAllPipe } from '../../../pipes/pipes';
-import { TeamDetailsResult, ScheduleResult, ScheduleResultRow } from '../../../models/models';
+import { TeamLogoPipe, PlayerPortraitPipe, ReplaceAllPipe } from '../../../pipes/pipes';
+import {
+	TeamDetailsResult,
+	ScheduleResult,
+	ScheduleResultRow,
+	TeamRosterEntry
+} from '../../../models/models';
 
 declare var config: any;		// TODO: I can't get any interface to work -_-
 
 @Component({
 	selector: 'page-team-details',
-	directives: [DivisionTeam, GameResults],
+	directives: [DivisionTeam, GameResults, Tabs, Tab],
 	templateUrl: './app/components/pages/TeamDetails/TeamDetails.html',
-	pipes: [ TeamLogoPipe, ReplaceAllPipe ]
+	pipes: [TeamLogoPipe, PlayerPortraitPipe, ReplaceAllPipe]
 })
 export class PageTeamDetails {
 	routeParams: RouteParams;
@@ -26,6 +31,13 @@ export class PageTeamDetails {
 	scheduleLoading: boolean = true;
 
 	data: TeamDetailsResult;
+	squad: TeamRosterEntry[];
+	fullPosition = {
+		"G": "Goal",
+		"D": "Defense",
+		"F": "Forward"
+	};
+
 	pastGames: ScheduleResultRow[];
 	liveGames: ScheduleResultRow[];
 	futureGames: ScheduleResultRow[];
@@ -44,7 +56,30 @@ export class PageTeamDetails {
 
 		this.teamDetailsService.get(this.divisionId, this.teamId)
 			.subscribe(result => {
+				let squadSorted: TeamRosterEntry[][] = [
+						[], [], [], [], [], []
+					],
+					indices = {
+						"G": 0, "D": 1, "F": 2,
+						"G0": 3, "D0": 4, "F0": 5
+					};
+
 				this.data = result;
+
+				this.data.data.teamRoster.forEach(player => {
+					var key = player.position;
+					if (player.playerJerseyNr == 0) {
+						key += '0';
+					}
+					console.log('pushing ..');
+					squadSorted[indices[key]].push(player);
+				});
+
+				this.squad = [];
+				squadSorted.forEach(playerArr => {
+					this.squad = this.squad.concat(playerArr);
+				});
+
 				this.loading = false;
 			});
 	}

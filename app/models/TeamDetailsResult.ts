@@ -22,7 +22,7 @@ export interface TeamData {
 
 export interface TeamRosterEntry {
 	id: number;
-	position: string;					// F D or G
+	position: string;					// F(orward), D(efense) or G(oal)
 	playerJerseyNr: number;
 	playerLastname: string;
 	playerFirstname: string;

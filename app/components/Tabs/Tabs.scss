@@ -1,0 +1,43 @@
+.tabs-container {
+	margin-top: 45px;
+
+	.tabs-list {
+		display: flex;
+
+		.tab-title {
+			flex: 1;
+			background-color: $main-color;
+			color: $main-color-active;
+			text-align: center;
+			padding: 5px 10px;
+			font-size: 18px;
+
+			cursor: pointer;
+			border-top: 1px solid $main-color;
+
+			&:first-child {
+				border-left: 1px solid $main-color;
+			}
+			&:last-child {
+				border-right: 1px solid $main-color;
+			}
+
+			&:not(:last-child) {
+				border-right: 1px solid $main-color-active;
+			}
+
+			&.active {
+				background-color: $main-color-active;
+				color: $main-color;
+				font-weight: bold;
+			}
+		}
+
+	}
+	.tabs-content {
+		border: 1px solid $main-color;
+		border-top: none;
+
+		padding: 15px;
+	}
+}

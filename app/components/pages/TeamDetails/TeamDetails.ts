@@ -26,6 +26,7 @@ export class PageTeamDetails {
 
 	teamId: number;
 	divisionId: number;
+	divisionName: string;
 
 	loading: boolean = true;
 	scheduleLoading: boolean = true;
@@ -51,6 +52,11 @@ export class PageTeamDetails {
 	ngOnInit () {
 		this.teamId = +this.routeParams.params['teamId'];
 		this.divisionId = +this.routeParams.params['divisionId'];
+		config.divisions.all.forEach(division => {
+			if (division.id == this.divisionId) {
+				this.divisionName = division.title;
+			}
+		});
 
 		this.reloadGamesList();
 
@@ -71,7 +77,6 @@ export class PageTeamDetails {
 					if (player.playerJerseyNr == 0) {
 						key += '0';
 					}
-					console.log('pushing ..');
 					squadSorted[indices[key]].push(player);
 				});
 

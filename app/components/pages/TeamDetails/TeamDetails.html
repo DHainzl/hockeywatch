@@ -30,6 +30,44 @@
 
 	<tabs>
 		<tab title="Team Stats">
+			<h2>{{divisionName}}</h2>
+
+			<div class="table-responsive stats-table">
+				<table class="table table-hover">
+					<tr>
+						<th>Spiele gespielt</th>
+						<td>{{data.data.teamStats.gamesPlayed}}</td>
+					</tr>
+					<tr>
+						<th>Powerplay</th>
+						<td>{{data.data.teamStats.powerplay}} ({{data.data.teamStats.powerplayPercentage}})</td>
+					</tr>
+					<tr>
+						<th>Penalty Kill</th>
+						<td>{{data.data.teamStats.penaltykill}} ({{data.data.teamStats.penaltyKillingPercentage}})</td>
+					</tr>
+					<tr>
+						<th>Minuten im Penalty</th>
+						<td>{{data.data.teamStats.penaltyMinutes}}</td>
+					</tr>
+					<tr>
+						<th>Minor Penalties</th>
+						<td>{{data.data.teamStats.minorPenalties}}</td>
+					</tr>
+					<tr>
+						<th>Major Penalties</th>
+						<td>{{data.data.teamStats.majorPenalties}}</td>
+					</tr>
+					<tr>
+						<th>Torschüsse</th>
+						<td>{{data.data.teamStats.shotsOnGoalTotal}}</td>
+					</tr>
+					<tr>
+						<th>Tor-Effizienz</th>
+						<td>{{data.data.teamStats.scoringEfficiency}}</td>
+					</tr>
+				</table>
+			</div>
 		</tab>
 		<tab title="Kader">
 			<div class="row">

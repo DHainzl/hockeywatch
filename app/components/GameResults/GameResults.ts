@@ -3,13 +3,13 @@ import { RouterLink } from 'angular2/router';
 
 import { ScheduleResultRow } from '../../models/models';
 
-import { TeamLogoPipe, FormatLiveTimePipe } from '../../pipes/pipes';
+import { TeamLogoPipe } from '../../pipes/pipes';
 
 @Component({
 	selector: 'game-results',
 	templateUrl: './app/components/GameResults/GameResults.html',
 	directives: [ RouterLink ],
-	pipes: [TeamLogoPipe, FormatLiveTimePipe]
+	pipes: [TeamLogoPipe]
 })
 export class GameResults {
 	@Input("games") games: ScheduleResultRow[];

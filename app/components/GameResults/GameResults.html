@@ -1,6 +1,6 @@
 <div class="game-results">
 	<div *ngIf="games.length > 0">
-		<h2>{{title}}</h2>
+		<h2>{{title}} <span class="subtitle" *ngIf="subtitle">{{subtitle}}</span></h2>
 		<div *ngFor="#game of games" class="game-result clearfix" [routerLink]="['GameDetails', { divisionId: game.divisionId, gameId: game.id }]">
 			<div class="team-logo">
 				<img [src]="game.homeTeamId | teamLogo:game.divisionId" alt="Team logo {{game.homeTeamLongName}}" title="Team logo {{game.homeTeamLongName}}" width="40" />
@@ -18,8 +18,11 @@
 						<span class="hidden-xs">{{game.awayTeamLongName}}</span>
 					</span>
 				</span>
-				<div class="more-info">
+				<div class="more-info" *ngIf="game.gameStatus != 1">
 					{{ game.scheduledDate.longValue }} {{ game.scheduledTime}}
+				</div>
+				<div class="more-info" *ngIf="game.gameStatus == 1">
+					Live: {{getTime(game)}}
 				</div>
 			</div>
 			<div class="team-logo pull-right">

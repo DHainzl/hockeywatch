@@ -10,7 +10,7 @@
 			<game-results title="Nächste Spiele" [games]="futureGames" [showScore]="false"></game-results>
 		</div>
 		<div *ngIf="liveGames.length > 0">
-			<game-results title="Live" [games]="liveGames"></game-results>
+			<game-results title="Live" [subtitle]="'Letzte Aktualisierung: ' + scheduleLastRefresh.format('HH:mm:ss')" [games]="liveGames"></game-results>
 		</div>
 	</div>
 

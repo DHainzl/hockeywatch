@@ -40,10 +40,10 @@ export interface ScheduleResultRow {
 	timeIsToBeDetermined: boolean;
 	isOvertime: boolean;
 	isShootOut: boolean;
-	liveTime: number;
+	liveTime: number;							// seconds played
 	liveTimeString: string;
 	broadcasters: ScheduleResultBroadcasters[];		// or null
-	liveTimePeriodBar: any;				// TODO
+	liveTimePeriodBar: ScheduleResultPeriodBar[];
 	gameHasEnded: boolean;
 	labels: string[];
 	periodResults: string;				// "(x:y,x:y,x:y)"
@@ -54,7 +54,7 @@ export interface ScheduleResultRow {
 	periodResultsSO: string;
 	homeScorers: ScheduleResultScorers;
 	awayScorers: ScheduleResultScorers;
-	youtTubeLink: any;					// TODO
+	youTubeLink: any;					// TODO
 }
 
 export interface ScheduleResultDate {
@@ -79,4 +79,12 @@ export interface ScheduleResultBroadcasters {
 
 export interface ScheduleResultScorers {
 	rows: string[];
+}
+
+export interface ScheduleResultPeriodBar {
+	maxLength: number;			// All add up to 100
+	shortName: string;			// "1/3", "OT", etc.
+	longName: string;			// "1st period", "Overtime", etc.
+	isActive: number;			// 0 / 1
+	progress: number;			// 0 - 100
 }

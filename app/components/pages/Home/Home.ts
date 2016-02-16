@@ -19,6 +19,7 @@ declare var config: any;		// TODO: I can't get any interface to work -_-
 export class PageHome {
 	scheduleService: ScheduleService;
 	scheduleLoading: boolean = true;
+	scheduleLastRefresh: moment.Moment;
 
 	pastGames: ScheduleResultRow[] = [];
 	liveGames: ScheduleResultRow[] = [];
@@ -54,7 +55,9 @@ export class PageHome {
 				this.pastGames = this.pastGames.filter(row => moment(row.gameUtcTimestamp).isSame(lastGameDate, 'day'));
 				this.futureGames = this.futureGames.filter(row => moment(row.gameUtcTimestamp).isSame(nextGameDate, 'day'));
 
+				this.scheduleLastRefresh = moment();
 				this.scheduleLoading = false;
+				window.setTimeout(() => this.reloadGamesList(), 30000);
 			})
 			.catch(error => console.error('Error', error));
 	}

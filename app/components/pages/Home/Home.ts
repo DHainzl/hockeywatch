@@ -3,7 +3,7 @@ import { Component, View } from 'angular2/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
-import { HockeyTable, GameResults } from '../../components';
+import { HockeyTable, GameResults, LoadingScreen } from '../../components';
 import { ScheduleService } from '../../../services/services';
 import { ScheduleResult, ScheduleResultRow } from '../../../models/models';
 import { TeamLogoPipe } from '../../../pipes/pipes';
@@ -12,7 +12,7 @@ declare var config: any;		// TODO: I can't get any interface to work -_-
 
 @Component({
 	selector: 'page-home',
-	directives: [ HockeyTable, GameResults ],
+	directives: [ HockeyTable, GameResults, LoadingScreen ],
 	templateUrl: './app/components/pages/Home/Home.html',
 	pipes: [TeamLogoPipe]
 })

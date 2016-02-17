@@ -1,8 +1,6 @@
 <div class="page page-home">
 	<h1><span class="fa fa-clock-o"></span> Aktuell</h1>
-	<div *ngIf="scheduleLoading">
-		Loading ...
-	</div>
+	<loading-screen *ngIf="scheduleLoading"></loading-screen>
 	<div *ngIf="!scheduleLoading">
 		<div *ngIf="liveGames.length == 0">
 			<!-- No live games, show past / future -->
